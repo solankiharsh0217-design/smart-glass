@@ -14,12 +14,10 @@ export function Gallery() {
       <div className="mt-14 grid grid-cols-2 gap-4 lg:grid-cols-4">
         {IMG.gallery.map((src, i) => (
           <Reveal key={src} delay={(i % 4) * 0.07}>
-            {/* Every third tile runs tall to break up the grid rhythm. */}
-            <div
-              className={`overflow-hidden rounded-2xl bg-bg ${
-                i % 3 === 0 ? "aspect-[3/4]" : "aspect-square"
-              }`}
-            >
+            {/* One ratio for every tile so rows align. The sources run from 0.75
+                portrait to 1.0 square, and square splits that difference with the
+                least cropping. */}
+            <div className="aspect-square overflow-hidden rounded-2xl bg-bg">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src={src}

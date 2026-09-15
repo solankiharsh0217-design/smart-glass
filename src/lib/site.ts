@@ -40,7 +40,7 @@ export const IMG = {
   crystalA: `${UPLOADS}/Shenzhen-Yinhan-Tech-Company-Profile-3181_251028_192339-18.png`,
   // The actual grille panel product shot (1327x819).
   grilleA: `${UPLOADS}/Shenzhen-Yinhan-Tech-Company-Profile-3181_251028_192339-20-Copy.png`,
-  // Tall tiles fall on indices 0, 3 and 6 — the portrait shots sit there.
+  // Gallery tiles are a uniform square, so order is purely editorial.
   gallery: [
     `${UPLOADS}/IMG-20251015-WA0030.jpg`,
     `${UPLOADS}/unnamed-5.jpg`,
