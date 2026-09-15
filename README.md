@@ -1,36 +1,66 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Smart Glass UK
 
-## Getting Started
+Marketing site for Smart Glass UK — switchable privacy glass (PDLC) and
+transparent LED display, supplied and installed across the UK and Ireland.
 
-First, run the development server:
+Built with Next.js 16 (App Router, Turbopack), React 19, Tailwind CSS v4 and
+Framer Motion.
+
+## Running it
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
+npm run dev     # http://localhost:3000
+npm run build   # production build
+npm run lint
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Routes
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+| Route | Rendering | What it is |
+| --- | --- | --- |
+| `/` | Static | Hero, solutions, why-us, sectors, gallery, CTA |
+| `/products/pdlc-smart-film` | SSG | Switchable privacy glass |
+| `/products/crystal-clear-display` | SSG | Transparent LED display |
+| `/products/t-grille` | SSG | Architectural LED grille |
+| `/contact` | Static | Enquiry form + both offices |
+| `/api/contact` | Dynamic | Form handler |
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+The three product pages are generated from one array via
+`generateStaticParams`, so adding a product means adding an object — no new
+route file.
 
-## Learn More
+## Where the content lives
 
-To learn more about Next.js, take a look at the following resources:
+**`src/lib/site.ts` is the single source of truth.** Brand, navigation,
+products (features / specs / applications / FAQ), sectors, and both office
+addresses all live there. Pages read from it, so copy changes never require
+touching JSX, and the nav, footer, product routes and sitemap all derive from
+the same data.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Image assignments in `IMG` are chosen against each asset's real aspect ratio so
+`object-cover` never discards most of the frame — portrait shots go on the tall
+gallery tiles, squares on the cards, 16:9 on the wide banners. Check the ratio
+before swapping one.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Two things to do before launch
 
-## Deploy on Vercel
+**1. Wire up email.** `src/app/api/contact/route.ts` validates submissions and
+returns proper errors, but currently only logs them. There is a marked block
+where an email provider (Resend, Postmark, SES, SMTP) slots in. Until that is
+done, enquiries reach nobody.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+**2. Self-host the images.** Images are currently hotlinked from
+`smartglassuk.com/wp-content/uploads/...`. They work, but will break if the
+WordPress media library is reorganised. Copy them into `public/` and update the
+`UPLOADS` constant in `src/lib/site.ts`.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Styling
+
+Design tokens are CSS custom properties in `src/app/globals.css`, exposed to
+Tailwind via `@theme inline`. The brand accent is `--accent: #8ec73e` with
+`--accent-ink: #1d3a07` for text on top of it.
+
+Heading styles live in `@layer base` deliberately — without the layer, the base
+`h1`/`h2`/`h3` colour would override Tailwind text utilities and dark-section
+headings would render near-black on near-black.
