@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { BRAND, PRODUCTS, OFFICES, CONTACT, IMG } from "@/lib/site";
+import { BRAND, PRODUCTS, OFFICES, CONTACT } from "@/lib/site";
 
 export function Footer() {
   return (
@@ -7,13 +7,10 @@ export function Footer() {
       <div className="mx-auto max-w-[1440px] px-7 py-16 md:py-20">
         <div className="grid gap-12 md:grid-cols-[1.4fr_1fr_1fr] md:gap-10">
           <div>
-            {/* Ships white-on-transparent, so it sits on the dark footer as-is. */}
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src={IMG.logo}
-              alt={BRAND.legal}
-              className="h-12 w-auto object-contain object-left"
-            />
+            <p className="text-[2.2rem] leading-none font-semibold tracking-[-0.03em] text-white">
+              {BRAND.name}
+              <span className="text-accent">.</span>
+            </p>
             <p className="mt-4 max-w-[380px] text-[0.95rem] leading-relaxed text-white/60">
               {BRAND.tagline}
             </p>
@@ -36,7 +33,7 @@ export function Footer() {
                 <li key={p.slug}>
                   <Link
                     href={`/products/${p.slug}`}
-                    className="text-[0.95rem] text-white/70 transition-colors hover:text-accent"
+                    className="inline-flex min-h-11 items-center text-[0.95rem] text-white/70 transition-colors hover:text-accent md:min-h-0"
                   >
                     {p.nav}
                   </Link>
@@ -45,7 +42,7 @@ export function Footer() {
               <li>
                 <Link
                   href="/contact"
-                  className="text-[0.95rem] text-white/70 transition-colors hover:text-accent"
+                  className="inline-flex min-h-11 items-center text-[0.95rem] text-white/70 transition-colors hover:text-accent md:min-h-0"
                 >
                   Contact
                 </Link>
@@ -70,7 +67,7 @@ export function Footer() {
                   </address>
                   <a
                     href={o.phoneHref}
-                    className="mt-1.5 inline-block text-[0.9rem] text-white/70 transition-colors hover:text-accent"
+                    className="mt-1.5 inline-flex min-h-11 items-center text-[0.9rem] text-white/70 transition-colors hover:text-accent md:min-h-0"
                   >
                     {o.phone}
                   </a>
@@ -86,7 +83,7 @@ export function Footer() {
           </p>
           <a
             href={`mailto:${CONTACT.email}`}
-            className="text-[0.85rem] text-white/60 transition-colors hover:text-accent"
+            className="inline-flex min-h-11 items-center text-[0.85rem] text-white/60 transition-colors hover:text-accent md:min-h-0"
           >
             {CONTACT.email}
           </a>

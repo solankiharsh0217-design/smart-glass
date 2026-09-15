@@ -49,7 +49,9 @@ function Card({ product, index }: { product: Product; index: number }) {
         style={{ backgroundColor: band.bg, scale }}
         className="relative overflow-hidden rounded-3xl shadow-2xl"
       >
-        <div className="grid gap-8 p-8 md:grid-cols-2 md:items-center md:gap-12 md:p-12 lg:p-16">
+        {/* Extra bottom padding on mobile: the next card overlaps this one, and
+            the slack keeps it off the CTA. */}
+        <div className="grid gap-8 p-8 pb-24 md:grid-cols-2 md:items-center md:gap-12 md:p-12 md:pb-12 lg:p-16">
           <div>
             <p
               className="text-[0.75rem] font-semibold tracking-[0.16em] uppercase"
@@ -102,9 +104,11 @@ function Card({ product, index }: { product: Product; index: number }) {
             </Link>
           </div>
 
-          <div className="relative overflow-hidden rounded-2xl">
+          {/* Stacked single-column, the photo leads — below the CTA it would be
+              clipped by the next card riding over this one. */}
+          <div className="relative order-first overflow-hidden rounded-2xl md:order-none">
             {/* Taller than the frame so the parallax drift never exposes an edge. */}
-            <div className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl">
+            <div className="relative aspect-[16/10] w-full overflow-hidden rounded-2xl md:aspect-[4/3]">
               <motion.img
                 src={product.image}
                 alt={product.name}

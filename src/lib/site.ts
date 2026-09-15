@@ -5,11 +5,11 @@
 
 /** Canonical origin. Override with NEXT_PUBLIC_SITE_URL per environment. */
 export const SITE_URL =
-  process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, "") ?? "https://smartglassuk.com";
+  process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, "") ?? "https://veylglass.com";
 
 export const BRAND = {
-  name: "Smart Glass",
-  legal: "Smart Glass UK",
+  name: "Veyl",
+  legal: "Veyl Glass",
   tagline: "Switchable privacy glass and transparent LED display, supplied and installed across the UK and Ireland.",
 } as const;
 
@@ -24,10 +24,8 @@ const UPLOADS = "/images";
  * throw most of the frame away:
  *   hero 1.78 → 1.6 box      portraits 0.75 → the tall gallery tiles
  *   squares 1.0 → 1.25 cards  Shenzhen panel shots 1.6 → product banners
- * Smart-glass-1/-3 are the 4.2:1 wordmark, so they are logo-only — never a photo.
  */
 export const IMG = {
-  logo: `${UPLOADS}/Smart-glass-3.png`,
   // PDLC lamination on the factory floor — authentic, and 1.78 fits the 1.6 box.
   heroPartition: `${UPLOADS}/IMG-20250224-WA0007.jpeg`,
   // Portrait 0.75, matches the 4/5 panel in WhyUs, and shows real partition work.
@@ -323,7 +321,7 @@ export const OFFICES = [
 ] as const;
 
 export const CONTACT = {
-  email: "simon@smartglassuk.com",
+  email: "hello@veylglass.com",
   whatsapp: "https://wa.me/447391650896",
   whatsappLabel: "+44 7391 650896",
 } as const;

@@ -1,6 +1,6 @@
-# Smart Glass UK
+# Veyl Glass
 
-Marketing site for Smart Glass UK — switchable privacy glass (PDLC) and
+Marketing site for Veyl Glass — switchable privacy glass (PDLC) and
 transparent LED display, supplied and installed across the UK and Ireland.
 
 Built with Next.js 16 (App Router, Turbopack), React 19, Tailwind CSS v4 and
@@ -50,10 +50,9 @@ returns proper errors, but currently only logs them. There is a marked block
 where an email provider (Resend, Postmark, SES, SMTP) slots in. Until that is
 done, enquiries reach nobody.
 
-**2. Self-host the images.** Images are currently hotlinked from
-`smartglassuk.com/wp-content/uploads/...`. They work, but will break if the
-WordPress media library is reorganised. Copy them into `public/` and update the
-`UPLOADS` constant in `src/lib/site.ts`.
+**2. Replace the placeholder brand.** "Veyl" is a placeholder wordmark, and the
+office addresses and phone numbers in `src/lib/site.ts` are still sample data.
+Swap both before this goes anywhere public.
 
 ## Styling
 

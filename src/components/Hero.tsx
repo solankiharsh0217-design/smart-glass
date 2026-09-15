@@ -78,10 +78,10 @@ export function Hero() {
               installed by our own technicians across the UK and Ireland.
             </p>
             <span className="hidden h-12 w-px bg-white/40 sm:block" />
-            <div className="flex flex-wrap gap-3">
+            <div className="flex w-full flex-col gap-3 sm:w-auto sm:flex-row sm:flex-wrap">
               <Link
                 href="/contact"
-                className="inline-flex items-center justify-center rounded-lg bg-accent px-7 py-3.5 text-[1rem] font-semibold text-accent-ink transition-all hover:-translate-y-0.5 hover:brightness-95 active:scale-[0.98]"
+                className="inline-flex items-center justify-center rounded-lg bg-accent px-7 py-4 sm:py-3.5 text-[1rem] font-semibold text-accent-ink transition-all hover:-translate-y-0.5 hover:brightness-95 active:scale-[0.98]"
               >
                 Book a free consultation
               </Link>
@@ -89,7 +89,7 @@ export function Hero() {
                 href={CONTACT.whatsapp}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center rounded-lg border border-white/35 px-7 py-3.5 text-[1rem] font-semibold text-white transition-all hover:-translate-y-0.5 hover:bg-white/10"
+                className="inline-flex items-center justify-center rounded-lg border border-white/35 px-7 py-4 sm:py-3.5 text-[1rem] font-semibold text-white transition-all hover:-translate-y-0.5 hover:bg-white/10"
               >
                 WhatsApp
               </a>
@@ -100,16 +100,16 @@ export function Hero() {
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
-            className="mt-14 flex flex-wrap gap-10 border-t border-white/20 pt-7 md:gap-16"
+            className="mt-8 grid grid-cols-3 gap-4 border-t border-white/20 pt-6 md:mt-14 md:flex md:flex-wrap md:gap-16 md:pt-7"
           >
             {STATS.map((s) => (
               <div key={s.label}>
                 <dt className="sr-only">{s.label}</dt>
                 <dd>
-                  <p className="text-[clamp(1.7rem,3.2vw,2.4rem)] leading-none font-semibold text-white">
+                  <p className="text-[clamp(1.25rem,5.5vw,2.4rem)] leading-none font-semibold text-white">
                     {s.value}
                   </p>
-                  <p className="mt-2 max-w-[160px] text-[0.85rem] leading-snug text-white/70">
+                  <p className="mt-2 text-[0.78rem] leading-snug text-white/70 md:max-w-[160px] md:text-[0.85rem]">
                     {s.label}
                   </p>
                 </dd>

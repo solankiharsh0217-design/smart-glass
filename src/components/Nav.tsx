@@ -4,7 +4,7 @@ import { useRef, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion, useMotionValueEvent, useScroll, AnimatePresence } from "framer-motion";
-import { BRAND, PRODUCTS, CONTACT, IMG } from "@/lib/site";
+import { BRAND, PRODUCTS, CONTACT } from "@/lib/site";
 
 export function Nav() {
   const [scrolled, setScrolled] = useState(false);
@@ -57,16 +57,15 @@ export function Nav() {
       }}
     >
       <div className="mx-auto flex max-w-[1440px] items-center justify-between gap-6 px-7 py-4">
-        <Link href="/" aria-label={BRAND.legal} className="shrink-0">
-          {/* The wordmark ships white-on-transparent, so it needs flipping to
-              black once the bar turns solid. */}
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src={IMG.logo}
-            alt={BRAND.legal}
-            className="h-9 w-auto object-contain object-left transition-[filter] duration-300 md:h-11"
-            style={{ filter: light ? "none" : "brightness(0)" }}
-          />
+        <Link
+          href="/"
+          aria-label={BRAND.legal}
+          className={`flex min-h-11 shrink-0 items-center text-[1.6rem] leading-none font-semibold tracking-[-0.03em] transition-colors md:text-[1.8rem] ${
+            light ? "text-white" : "text-ink"
+          }`}
+        >
+          {BRAND.name}
+          <span className="text-accent">.</span>
         </Link>
 
         <div className="flex items-center gap-8">
@@ -141,12 +140,12 @@ export function Nav() {
             aria-label="Toggle menu"
             aria-expanded={open}
             onClick={() => setOpen((o) => !o)}
-            className="flex w-7 flex-col gap-1.5 p-1 md:hidden"
+            className="-mr-2 flex h-11 w-11 flex-col items-center justify-center gap-1.5 md:hidden"
           >
             {[0, 1, 2].map((i) => (
               <motion.span
                 key={i}
-                className={`h-0.5 rounded ${light ? "bg-white" : "bg-ink"}`}
+                className={`h-0.5 w-6 rounded ${light ? "bg-white" : "bg-ink"}`}
                 animate={
                   open
                     ? i === 0

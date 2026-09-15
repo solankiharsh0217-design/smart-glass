@@ -47,7 +47,7 @@ export default function ContactPage() {
                 </a>
                 <a
                   href={`mailto:${CONTACT.email}`}
-                  className="mt-5 block text-[0.95rem] text-white/70 transition-colors hover:text-accent"
+                  className="mt-5 inline-flex min-h-11 items-center text-[0.95rem] text-white/70 transition-colors hover:text-accent md:min-h-0"
                 >
                   {CONTACT.email}
                 </a>
@@ -68,7 +68,7 @@ export default function ContactPage() {
                   </address>
                   <a
                     href={o.phoneHref}
-                    className="mt-3 inline-block text-[0.98rem] font-medium text-ink transition-colors hover:text-accent-ink"
+                    className="mt-3 inline-flex min-h-11 items-center text-[0.98rem] font-medium text-ink transition-colors hover:text-accent-ink md:min-h-0"
                   >
                     {o.phone}
                   </a>

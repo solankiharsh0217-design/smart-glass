@@ -44,7 +44,7 @@ export async function POST(request: Request) {
 
   // --- Wire an email provider here ---------------------------------------
   // await resend.emails.send({
-  //   from: "site@smartglassuk.com",
+  //   from: "site@veylglass.com",
   //   to: CONTACT.email,
   //   replyTo: email,
   //   subject: `[Website] ${subject}`,

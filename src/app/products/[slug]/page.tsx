@@ -37,7 +37,7 @@ export default async function ProductPage({
       <section className="mx-auto max-w-[1440px] px-7 pt-32 pb-16 md:pt-40">
         <Reveal>
           <nav aria-label="Breadcrumb" className="text-[0.85rem] text-ink-soft">
-            <Link href="/" className="transition-colors hover:text-ink">
+            <Link href="/" className="inline-flex min-h-11 items-center transition-colors hover:text-ink md:min-h-0">
               Home
             </Link>
             <span className="mx-2 text-muted">/</span>
